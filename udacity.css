@@ -1,0 +1,115 @@
+* {
+	/*border: 1px solid red !important;*/
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+	font-family: "Open Sans";
+}
+
+body {
+	margin: 25px 25px;
+}
+
+h1 {
+	color: white;
+	font-weight: 400;
+	font-size: 3rem;
+	text-transform: uppercase;
+	background-color: #33BEBE;
+	padding-left: 15px;
+	padding-top: 20px;
+	padding-bottom: 0;
+	margin-bottom: 60px;
+	max-width: 1165px;
+	
+}
+
+h2 {
+	margin-top: 0;
+	color: #7C8B88;
+}
+
+li {
+	font-size: 1.125rem;
+	line-height: 1.3;
+	color: #7C8B88;
+	padding: 3px;
+	margin-bottom: 3px;
+}
+
+li:last-child {
+	margin-bottom: 12px;
+}
+
+.app {
+	display: flex;
+}
+
+.screenshot {
+	max-width: 460px;
+	margin-right: 35px;
+}
+
+.description {
+	max-width: 705px;
+
+}
+/*
+html,
+body {
+	background: #FCFCFC;
+	font-family: "Open Sans", sans-serif;
+	font-size: 100%;
+	line-height: 1.5;
+	text-rendering: optimizeLegibility;
+}
+.container {
+	margin: 0 auto;
+}
+.header {
+	background-color: pink;
+	display: flex;
+}
+
+.header img {
+	width: 100px;
+}
+
+h1 {
+	font-size: 2.5rem;
+	font-weight: 400;
+	text-align: left;
+}
+
+h2 {
+	color: dimgray;
+	font-weight: 400;
+	font-size: 1.25rem;
+	margin-top: 0;
+	margin-bottom: 2rem;
+}
+
+button {
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 700;
+	font-size: 0.875rem;
+	display: inline-block;
+	box-sizing: border-box;
+	width: auto;
+	cursor: pointer;
+	border: 0;
+	padding: 16px 15px;
+	line-height: 1.75rem;
+	box-sizing: border-box;
+}
+.buttonPDF {
+	color: #fff;
+	background-color: #008ac6;
+}
+
+.buttonWebHelp {
+	color: #023852;
+	background-color: #ffe700;
+}*/
