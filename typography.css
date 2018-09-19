@@ -1,0 +1,20 @@
+/*BEST PRACTICES FOR LEGIBILITY
+Paragraph spacing is defined by margin-top and margin-bottom.
+Line spacing is defined by line-height. Use unitless values.
+
+Examples:
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: .6em; 
+}
+
+.level1 .li {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: .4em;
+}
+*/  
