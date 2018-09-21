@@ -1,0 +1,20 @@
+{
+    "brackets-eslint.gutterMarks": true,
+    "brackets-eslint.useLocalESLint": false,
+    "fonts.fontSize": "15px",
+    "fonts.fontFamily": "'SourceCodePro-Medium', ＭＳ ゴシック, 'MS Gothic', monospace",
+    "useTabChar": true,
+    "styleActiveLine": true,
+    "themes.theme": "os-x-style-flat-dark-theme",
+    "closeBrackets": false,
+    "closeTags": {
+        "whenOpening": false,
+        "whenClosing": false,
+        "indentTags": []
+    },
+    "noDistractions": false,
+    "wordWrap": true,
+    "linting.collapsed": true,
+    "brackets-indent-guides.enabled": true,
+    "autoSavePrefs.checkedPrefs": false
+}
