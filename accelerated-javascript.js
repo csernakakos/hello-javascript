@@ -719,3 +719,51 @@ for (var fiiieeld in person) { //for-loop looping through all fields
 for (var fiiieeld in person) { //for-loop looping through all values
     console.log(person[fiiieeld]); //27, function
 }
+
+///////////////////////////
+///      FUNCTIONS      ///
+///////////////////////////
+
+//Closures are functions defined in another function. Closures are aware of their environment. Useful for callbacks. Callback functions are aware of the function that result in the callback, and in functions inside functions.
+function generator(input) {
+    var number = input;
+    return function() { //Anonymous function. We're calling it from the inside of another function. This is a closure.You can use "number" and "inside" in this function, because closures are aware of their environment.
+        return number * 2;
+    }
+}
+
+var calc = generator(900);
+console.log(calc);//returns the inside function. We're executing the generator function and passing in 900. This generator function simply returns another function. This function is bound to calc. To execute this function:
+console.log(calc());//returns 1800. The closure is aware of its environment: number and input.
+
+//IIFEs: immediately invoked function expressions. Immediately executed when the code runs through our JS file. 
+(function calc() {
+    var number = 10;
+    console.log("Calc");
+})();
+console.log(number);
+//Why is this useful? We're using local scope here. We make sure we don't pollute our global scope with variables. Good when using third-party stuff.  
+
+//methods and properties we can use with functions
+function message(message) {
+    console.log(message);
+}
+message("Hi!");
+
+function message(message) {
+    console.log(message);
+    console.log(arguments[0]);//We've never created this before. Check for extra arguments and access them.
+    console.log(arguments.length);//returns 3
+}
+message("Hi!", 10, 5);
+
+console.log(message.name);//returns "message"
+
+var msg = message;
+console.log(msg.name);//find out which function gets executed.
+console.log(msg.length);//returns 1. The number of arguments this function expects. Useful to learn how many arguments you have to pass to a function.
+
+var msg = function (message) {
+    console.log(message);
+}
+console.log(msg.name);//returns nothing. Above we bind an anonymous function to the "msg" variable.
