@@ -767,3 +767,129 @@ var msg = function (message) {
     console.log(message);
 }
 console.log(msg.name);//returns nothing. Above we bind an anonymous function to the "msg" variable.
+
+///////////////////////////
+///       BUILT-IN      ///
+/// OBJECTS AND METHODS ///
+///////////////////////////
+
+//setTimeout(), setInterval(), clearInterval()
+//parseInt(), .toString(), .toFixed()
+//.length, .charAt(), .concat(), .toUpperCase(), .split(), .trim()
+
+
+
+
+//setTimeout(): on the Window object, global scope. It waits for a certain amount of milliseconds before executing a function. Two arguments: the function it should execute, and the timeout.
+//setTimeout(function, time);
+setTimeout(function() {
+    console.log("Two seconds passed!");
+}, 2000);
+
+//setInterval(), clearInterval(): expects a function and a milliseconds argument
+setInterval(function() {
+    console.log("Repeat this every half a second.")
+}, 500);//By default, it doesn't stop. 
+
+var myInterval = setInterval(function() {
+    console.log("Repeat this every half a second and stop after 2.5 seconds")
+}, 500);
+
+setTimeout(function(){
+    clearInterval(myInterval);
+}, 2500);
+
+//parseInt(): transform certain strings to number
+var a = "5";
+console.log(parseInt(a));
+
+//.toString(): transform any object to string
+var b = 12;
+console.log(b.toString());
+
+//.toFixed(): rounds a number or decimal places if you use arguments
+var c = 10.3;
+console.log(c.toFixed());
+var d = 12.3456789;
+console.log(d.toFixed(4));//prints 10.3457
+
+//.length, .charAt(), .concat(), .toUpperCase(), .split(), .trim()
+let string = "Any text";
+console.log(string.length);//prints 8. Use a string like an array
+console.log(string[2]);//prints "y"
+console.log(string.charAt(2));//prints "y"
+console.log(string.concat(" add a new string."));
+console.log(string.toUpperCase());
+console.log(string.split(" "));//splits the two words into two elements: because the element before and after the white space shows up as separate  elements.
+
+let stringTwo = "Any text          ";
+console.log(stringTwo.trim());//trims excess leading and trailing white space
+
+//The Math object gives you access to methods related to mathematics
+var pi = Math.PI;
+console.log(pi);
+
+var e = Math.E;
+console.log(e);
+
+let a = -3;
+console.log(Math.abs(a));//prints 3.
+
+let b = 1.27;
+console.log(Math.ceil(b));//rounds a number up to the next integer.
+
+let c = 1.14;
+console.log(Math.floor(c));//rounds a number down to the previous integer.
+
+console.log(Math.max(1, 100, 1000));//returns 1000, the largest number of them all.
+
+console.log(Math.random());//returns a random number between 0 and 1
+
+var rnd = Math.random() * 100 + 1;
+console.log(rnd);//starting at 1
+
+var randWhole = Math.floor(Math.random() * 100) + 1;
+console.log(randWhole);
+
+//Date
+var today = new Date();
+console.log(today.toString());
+
+var today = new Date(2016, 0, 26);
+console.log(today.toString());
+
+var today = new Date("2016/1/26");
+console.log(today.toString());
+
+console.log(Date.parse("2016/05/20"));
+
+//Regular expressions. Search methods to look for certain characters in a text.
+
+var string = "abc";
+var pattern= /ab/;
+console.log(pattern);//prints [object RegExp] { ... }
+console.log(pattern.exec(string));//prints ["ab"]
+console.log(pattern.test(string));//true
+var pattern= /ac/;
+console.log(pattern.exec(string));//null
+console.log(pattern.test(string));//false
+
+console.log(string.match(pattern));//same as .exec, just the other way around.
+
+//Validate email regex: https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+///////////////////////////
+///         DOM         ///
+///////////////////////////
+
+//The Window object
+
+
+
+
+
+
