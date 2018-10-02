@@ -886,10 +886,18 @@ function validateEmail(email) {
 ///         DOM         ///
 ///////////////////////////
 
-//The Window object
+//The Window object = the global scope, the global object
+console.log(window.innerWidth);//or: console.log(innerWidth). No need to specify window. because we're on that object already, by default.
+console.log(outerWidth);
+console.log(window);
+console.log(localStorage);
 
+console.log(setItem("key1", 1000));
+console.log(localStorage.getItem("key1"));//prints 1000. Store some data in our running application and call them while the application is running.
 
+window.open("http://www.google.com");//opens new pop-up window
 
-
-
-
+//location
+console.log(window.location);//access to location and DOM
+location.reload();
+location.replace("https://www.google.com");
