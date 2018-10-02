@@ -886,7 +886,7 @@ function validateEmail(email) {
 ///         DOM         ///
 ///////////////////////////
 
-//The Window object = the global scope, the global object
+//Window object = the global scope, the global object
 console.log(window.innerWidth);//or: console.log(innerWidth). No need to specify window. because we're on that object already, by default.
 console.log(outerWidth);
 console.log(window);
@@ -897,7 +897,115 @@ console.log(localStorage.getItem("key1"));//prints 1000. Store some data in our 
 
 window.open("http://www.google.com");//opens new pop-up window
 
-//location
+//Location object
 console.log(window.location);//access to location and DOM
 location.reload();
 location.replace("https://www.google.com");
+
+//Document object: Another propert/object on the Window object. The Document object holds the whole HTML and other methods.
+console.log(document);
+console.log(document.URL);
+console.log(document.title);
+console.log(document.body);//Holds the body. Prints the DOM: the translated HTML code, all the attached events, etc.
+
+console.log(document.body.children);//All the HTML tags represented as objects: attributes and properties.
+
+console.log(document.body.children[0]);//Access the first element, let's say, H1. Find out which element by searching for: tagName. Then, using the properties, such as textContent, you can drill further down: 
+console.log(document.body.children[0].textContent);//prints "Hello world." So every HTML element is transformed into a JS object with loads of properties. 
+
+document.body.children[0].textContent = "Akos Learning JS.";
+document.body.children[0].style.backgroundColor = "blue";
+
+//firstElementChild, lastElementChild, nextElementSibling, parentElement
+console.log(document.body.firstElementChild);//get the first child tag inside <body>
+console.log(document.body.lastElementChild);//get the last child tag inside the body.
+console.log(document.body.firstElementChild.nextElementSibling);
+console.log(document.body.firstElementChild.nextElementSibling.parentElement);
+
+//Mediocre way: More convenient ways using methods such as getElementsByTagName, 
+console.log(document.getElementsByTagName("li"));
+console.log(document.getElementsByClassName("note"));
+console.log(document.getElementById("contact-callout"));
+
+//Best way: using QuerySelector. Gives you the first element. Or QuerySelectorALl, which gives you all elements.
+console.log(document.querySelector(".note"));
+console.log(document.querySelectorAll(".note")[1]);//Select the second class="note".
+console.log(document.querySelector("#contact-callout"));
+
+//Creating and inserting elements
+var p = document.createElement("P");//We've just created a <p> element.
+p.textContent = "A new paragraph!";
+p.style.fontSize = "16px";
+console.log(p);//Proof that our <p> element exists. Next, decide where to add it. To add it between <h1> and <h2>:
+var h1 = document.querySelector("h1");
+console.log(h1);//Proof that we've selected <h1>.
+
+h1.appendChild(p);//Our new <p> is now a child of <h1>.
+h1.insertBefore(p, p);
+
+//Deleting elements (works cross-browser)
+var h1 = document.querySelector("h1");
+h1.parentElement.removeChild(h1);//supported by older browsers.
+
+//Deleting elements (shorter, for new browsers)
+h1.remove();
+
+//parentElement vs parentNode: Everything DOM is nodes. Some nodes happen to be HTML elements, as well. A node, however, can also be something that's not an HTML element. 
+
+///////////////////////////
+///       EVENTS        ///
+///////////////////////////
+
+//Events are for reacting to user actions. Event handlers.
+window.onload = function() {
+    console.log("Window loaded!");
+};
+ //With the onload property on the window object, we can add an event handler to this event. Then, we assign a closure/anonymous function to it, which handles the event whenever the event occurs. Then we print a message.
+
+ //Handle a click event on a button with the onclick event handler.
+ var btn = document.querySelector("button");
+ btn.onclick = function() {
+     console.log("Clicked");
+ };
+
+ //Which functions are available on an element? Log out the element onto the console. Or Google JS + element name + events. 
+
+ //To call multiple functions, use event listeners
+ btn.addEventListener("click", listener1);//first argument: when to listen. second: the reference to the function you want to execute when the event fires. Then, add a listener twp:
+ btn.addEventListener("click", listener2);
+
+ function listener1() {
+     console.log("Listener 1.");
+ };
+ function listener2() {
+    console.log("Listener 2.");
+};
+
+setTimeout(function() {
+    btn.removeEventListener("click", listener1);//removeEventListener expects the same arguments are addEventListener.
+}, 2000);
+
+//stopPropagation(): prevent an event from bubbling up to the parent element. For more info, watch 104 Event Behavior. If evvvent.bubbles is true, it bubbles up. If evvvent.bubbles is false, then stopPropagation() has worked and there's no more bubbling. evvvent.target: get the element on runtime. So you can tell which element triggered a specific event. evvvent.target.backgroundColor = "red" shows you exactly which element triggered an event. evvvent.clientX and evvvent.clientY give you X and Y coordinates of the element.
+
+///////////////////////////
+///        AJAX         ///
+///////////////////////////
+
+//AJAX, or, officially, XMLHttpRequest. Reach out to the internet and load or post data from within JS. E.g. update a page with new tweets or news that you fetched in the background with JS, and then rendered it to the view/to the page by manipulating the DOM. Normally, we use libraries to handle this. But we can do it with vanilla JS.
+
+//Simulate web requests: https://jsonplaceholder.typicode.com/ and get dummy data back.
+
+var http = new XMLHttpRequest(); //name of this http object. The name is like that for historical reasons.
+var url = "https://jsonplaceholder.typicode.com/posts";//We're pointing to the posts end point. We'll send a request to this URL and using the HTTP GET method.
+var method = "GET";
+
+http.open(method, url);//The .open method takes at least 2 arguments: the method to be used and the url. Now the request is open but hasn't been sent yet.
+
+http.onreadystatechange = function() { //Listen to when the request comes back. We're creating a function to handle the onreadystatechange event.
+    if (http.readyState === XMLHttpRequest.DONE && http.status === 200) {
+        console.log(http.responseText);
+    } else if (http.readyState === XMLHttpRequest.DONE && http.status !== 200) {
+        console.log("Error");
+    }
+};
+http.send();
